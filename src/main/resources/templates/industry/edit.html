@@ -1,0 +1,33 @@
+<html xmlns: xmlns:th="http://www.w3.org/1999/xhtml" th="http://www.thymeleaf.org">
+<head th:replace="layout_manager::head(~{::link})">
+  <link th:href="@{/css/industry.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="layout_manager::header"></div>
+<div th:replace="layout_manager::navbar"></div>
+
+<div th:fragment="content" class="col-md-10">
+  <h3>修改行业信息</h3>
+  <form th:action="@{/industry/editAction}" method="post">
+    <input type="text" name="id" th:value="${industry.id}" hidden="hidden"/>
+    <div class="form-group">
+      <label>行业名称:</label>
+      <input type="text"
+             name="name"
+             step = "any"
+             placeholder="请输入行业名称"
+             required
+             th:vlaue="${industry.name}"
+             class="search-input"
+      />
+    </div>
+    <div class="operation-buttons-group">
+      <button type="submit" class="bth-save">保存</button>
+      <button type="button" class="bth-return"
+              onclick="window.history.back()">返回</button>
+
+    </div>
+  </form>
+</div>
+</body>
+</html>

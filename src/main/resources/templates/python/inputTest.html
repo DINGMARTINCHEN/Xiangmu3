@@ -1,0 +1,13 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/submit}" method="post">
+        <input type="test" style="width:300px;" name="inputTest" placeholder="1表示趋向0的极限，2表示趋向无穷大的极限">
+        <button type="submit">提交</button> <br/>
+        <input type="test" style="width:300px;" name="javaResult" th:value="${javaResult}">
+    </form>
+</body>
+</html>

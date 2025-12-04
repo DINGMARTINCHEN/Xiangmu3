@@ -1,0 +1,103 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout_hr::head(~{::link})">
+    <link th:href="@{/css/salary.css}" rel="stylesheet" />
+</head>
+<script th:src="@{/js/salary.js}"></script>
+<script th:src="@{/js/echarts.min.js}"></script>
+<body>
+<div th:replace="layout_hr::header"></div>
+<div th:replace="layout_hr::navbar"></div>
+
+<div th:fragment="content" class="col-md-10">
+    <h3>薪资列表</h3>
+    <div class="header-container">
+        <form th:action="@{/salary/getBy}" method="Get" class="search-form">
+            <input type="text"
+                   name="workingAge"
+                   step="any"
+                   min="-999999999"
+                   max="999999999"
+                   oninput="validateFloatOrNull(this)"
+                   placeholder="请输入工作年限"
+                   class="search-input"
+            />
+            <button type="submit" class="btn-search">查询</button>
+        </form>
+        <div class="buttons-group">
+            <a class="btn-add" th:href="@{/salary/create}">薪资设定</a>
+            <a class="btn-export" th:href="@{/salary/export}"
+               onclick="return confirm('您确定要导出所有薪资记录吗?')">
+                导出
+            </a>
+            <a class="btn-predict" th:href="@{/salary/predict}">单行业预测</a>
+            <a class="btn-predict" th:href="@{/salary/predictByPoly}">多行业预测</a>
+        </div>
+    </div>
+    <div>
+        <table class="tableStyle">
+            <tr>
+                <th class="tableTdStyle">序号</th>
+                <th class="tableTdStyle">工作年限</th>
+                <th class="tableTdStyle">薪资金额</th>
+                <th class="tableTdStyle">所在行业</th>
+                <th class="tableTdStyle">操作</th>
+            </tr>
+            <tr th:each="salary, iterStatus : ${salaryList}">
+                <td th:text="${iterStatus.count}" class="tableTdStyle"></td>
+                <td th:text="${salary.workingAge}" class="tableTdStyle"></td>
+                <td th:text="${salary.salaryAmount}" class="tableTdStyle"></td>
+                <td th:text="${salary.industryName}" class="tableTdStyle"></td>
+                <td class="tableTdStyle">
+                    <div class="buttons-group">
+                        <a class="btn-edit"
+                           th:href="@{/salary/edit(id=${salary.id})}">调整</a>
+                        <a class="btn-delete"
+                           th:href="@{/salary/deleteAction(id=${salary.id})}"
+                           onclick="return confirm('您确定要删除该记录吗?')">
+                            作废
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="echarts-container" style="width: 600px;height: 400px;">
+        <script th:inline="javascript">
+            const chartDom = document.getElementById('echarts-container');
+            const myChart = echarts.init(chartDom);
+
+            const categories = /*[[${categories}]]*/[];
+            const values = /*[[${values}]]*/[];
+
+            const option = {
+                title: {
+                    text: '薪资信息统计',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                xAxis: {
+                    type: 'category',
+                    data: categories
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    name: '薪资',
+                    type: 'bar',
+                    data: values,
+                    itemStyle: {
+                        color: '#5470C6'
+                    }
+                }]
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', ()=> myChart.resize());
+        </script>
+    </div>
+</div>
+</body>
+</html>

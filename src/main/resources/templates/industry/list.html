@@ -1,0 +1,54 @@
+<html xmlns: xmlns:th="http://www.w3.org/1999/xhtml" th="http://www.thymeleaf.org">
+<html lang="en">
+<head th:replace="layout_manager::head(~{::link})">
+  <link th:href="@{/css/industry.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div th:replace="layout_manager::header"></div>
+<div th:replace="layout_manager::navbar"></div>
+
+<div th:fragment="content" class="col-md-10">
+  <h3>行业列表</h3>
+  <div class="header-container">
+    <form th:action="@{/industry/getBy}" method = "Get" class="search-from">
+      <input type="text"
+             name="name"
+             placeholder="请输入行业名称"
+             class="search-input"
+      />
+      <button type="submit" class="btn-search">查询</button>
+    </form>
+    <div class="buttons-group">
+      <a class="btn-add" th:href="@{/industry/create}">新增</a>
+    </div>
+  </div>
+  <div>
+    <table class="tableStyle">
+      <tr>
+        <th class="tableTdStyle">序号</th>
+        <th class="tableTdStyle">名称</th>
+        <th class="tableTdStyle">操作</th>
+      </tr>
+
+      <tr th:each="industry,iterStatus : ${industryList}">
+        <td th:text="${iterStatus.count}" class="tableTdStyle"></td>
+        <td th:text="${industry.name}" class="tableTdStyle"></td>
+        <td class="tableTdStyle">
+          <div class="buttons-group">
+
+            <a class="btn-edit" th:href="@{/industry/edit(id=${industry.id})}">修改</a>
+
+            <a class="btn-delete"
+               th:href="@{/industry/deleteAction(id=${industry.id})}"
+               onclick="return confirm('您确定要删除该记录吗？')">
+              删除
+            </a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

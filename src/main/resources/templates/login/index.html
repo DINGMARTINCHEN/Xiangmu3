@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link th:href="@{/css/login.css}" rel="stylesheet"/>
+    <script th:src="@{/js/login.js}"></script>
+</head>
+<body>
+<div class="login-container">
+    <div class="login-box">
+        <h3 class="title-style">薪资数据分析平台</h3>
+        <form th:action="@{/login/loginAction}" method="post">
+            <input type="text" class="login-input" placeholder="手机号码" name="mobile">
+            <input type="password" class="login-input" placeholder="用户密码" name="password">
+            <button class="login-btn">登录</button>
+        </form>
+
+        <span id="errorMessage" th:text="${errorMessage}" style="display: none;"></span>
+    </div>
+</div>
+</body>
+</html>

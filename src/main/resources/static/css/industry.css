@@ -1,0 +1,119 @@
+.tableStyle{
+   width:100%;
+   border:1px solid black;
+   text-align: center;
+   border-collapse: collapse;
+}
+.tableTdStyle{
+height:40px;
+text- align:center;
+border:1px solid black;
+}
+.header-container{
+ display: flex;
+ flex-wrap: wrap;
+ gap: 12px;
+}
+.search-from{
+display: flex;
+gap: 8px;
+}
+.search-input{
+  height:30px;
+  border:1px solid #DDD;
+  border-radius: 4px;
+  margin-right:5px;
+
+}
+.btn-search{
+ background: #4a90E2;
+ color: white;
+ font-size:14px !important;
+ border: none;
+ border-radius: 4px;
+ padding: 5px 15px;
+ cursor: pointer;
+}
+.buttons-group{
+   display:flex;
+   justify-content:center;
+   gap:8px;
+}
+.btn-add{
+  background: #4a90E2;
+  color: white;
+  font-size:14px !important;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 15px;
+  cursor: pointer;
+  height:30px;
+}
+
+.form-group{
+   display:flex;
+   flex-direction:row;
+   flex-wrap:wrap;
+   margin-bottom:20px;
+   width:300px;
+}
+.operation-buttons-group{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  width:300px;
+}
+.bth-save{
+ background: #4a90E2;
+ color: white;
+ font-size:14px !important;
+ border: none;
+ border-radius: 4px;
+ padding: 5px 15px;
+ cursor: pointer;
+ width:80px;
+}
+.bth-return{
+background: #4a90E2;
+ color: white;
+ font-size:14px !important;
+ border: none;
+ border-radius: 4px;
+ padding: 5px 15px;
+ cursor: pointer;
+ width:80px;
+}
+.btn-edit{
+   background: #4CAF50;
+   color: white;
+   font-size:14px !important;
+   border: none;
+   border-radius: 4px;
+   padding: 5px 15px;
+   cursor: pointer;
+   height:30px;
+ }
+ .btn-delete{
+    background: #FF6B6B;
+    color: white;
+    font-size:14px !important;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 15px;
+    cursor: pointer;
+    height:30px;
+  }
+  .btn-add a, a:link, a:visited, a:active, a:hover{
+  color:white;
+  text-decoration:none;
+  }
+  .btn-edit a, a:link, a:visited, a:active, a:hover{
+  color:white;
+  text-decoration:none;
+  }
+  .btn-delete a, a:link, a:visited, a:active, a:hover{
+  color:white;
+  text-decoration:none;
+  }
